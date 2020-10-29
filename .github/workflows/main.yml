@@ -49,7 +49,7 @@ jobs:
     # Build debug apk.
     - run: flutter build apk --debug -v
       #working-directory: ./app
-    - name: Run assembleDebug
+        
     - run: cd android
     
     - run: ./gradlew assembleDebug
