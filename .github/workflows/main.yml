@@ -45,13 +45,14 @@ jobs:
     # Run widget tests for our flutter project.
     # - run: flutter test
     #   working-directory: ./app
-    
+    - run: ./gradlew assembleDebug
+      working-directory: ./app/android
+      
     # Build debug apk.
     - run: flutter build apk --debug -v
       #working-directory: ./app
       
-    - run: ./gradlew assembleDebug
-      working-directory: ./app/android
+    
     
     # Build apk.
 #     - run: flutter build apk --release -v
