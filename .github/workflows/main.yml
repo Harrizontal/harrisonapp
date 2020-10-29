@@ -45,8 +45,9 @@ jobs:
     # Run widget tests for our flutter project.
     # - run: flutter test
     #   working-directory: ./app
-    - run: ./gradlew assembleDebug
-      working-directory: ./android
+    - run: |
+        cd android
+        ./gradlew assembleDebug
       
     # Build debug apk.
     - run: flutter build apk --debug -v
