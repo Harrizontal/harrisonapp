@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -51,6 +52,35 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    checkConnectivity();
+    super.initState();
+  }
+
+  checkConnectivity() async{
+    ConnectivityResult result;
+    Connectivity inConnectivity = Connectivity();
+    result = await inConnectivity.checkConnectivity();
+    switch (result) {
+      case ConnectivityResult.wifi:
+        print("on wifi");
+        break;
+      case ConnectivityResult.mobile:
+        print("on mobile");
+        break;
+      case ConnectivityResult.none:
+        print("no connect");
+        break;
+      default:
+        print("lolol");
+        break;
+    }
+  }
+
 
   void _incrementCounter() {
     setState(() {
