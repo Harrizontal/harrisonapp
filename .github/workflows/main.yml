@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2.1.0
     - uses: actions/setup-java@v1.3.0
       with:
-        java-version: '9.x'
+        java-version: '12.x'
     - run: java -version
     - uses: subosito/flutter-action@v1.3.1
       with:
@@ -49,6 +49,10 @@ jobs:
     # Build debug apk.
     - run: flutter build apk --debug -v
       #working-directory: ./app
+    - name: Run assembleDebug
+    - run: cd android
+    
+    - run: ./gradlew assembleDebug
     
     # Build apk.
 #     - run: flutter build apk --release -v
