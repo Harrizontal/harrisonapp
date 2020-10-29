@@ -49,10 +49,9 @@ jobs:
     # Build debug apk.
     - run: flutter build apk --debug -v
       #working-directory: ./app
-        
-    - run: cd android
-    
+      
     - run: ./gradlew assembleDebug
+      working-directory: ./app/android
     
     # Build apk.
 #     - run: flutter build apk --release -v
