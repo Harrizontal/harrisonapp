@@ -45,8 +45,11 @@ jobs:
     # Run widget tests for our flutter project.
     # - run: flutter test
     #   working-directory: ./app
-    - run: |
+    - name: Run gradle
+      run: |
+        ls
         cd android
+        chmod +x gradlew
         ./gradlew assembleDebug
       
     # Build debug apk.
