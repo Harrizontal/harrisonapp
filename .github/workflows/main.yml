@@ -46,7 +46,7 @@ jobs:
     # - run: flutter test
     #   working-directory: ./app
     - run: ./gradlew assembleDebug
-      working-directory: ./app/android
+      working-directory: ./android
       
     # Build debug apk.
     - run: flutter build apk --debug -v
