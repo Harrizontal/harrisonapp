@@ -31,7 +31,7 @@ jobs:
 
     # Get flutter dependencies.
     - run: flutter pub get
-      working-directory: ./app
+      #working-directory: ./app
 
     # Check for any formatting issues in the code.
     # - run: flutter format --set-exit-if-changed .
@@ -47,7 +47,7 @@ jobs:
     
     # Build debug apk.
     - run: flutter build apk --debug -v
-      working-directory: ./app
+      #working-directory: ./app
     
     # Build apk.
 #     - run: flutter build apk --release -v
@@ -56,5 +56,5 @@ jobs:
     # Upload generated apk to the artifacts.
     - uses: actions/upload-artifact@v1
       with:
-        name: release-apk
+        name: release-apk-harrison
         path: app/build/app/outputs/apk/release/app-release.apk
