@@ -34,23 +34,6 @@ jobs:
     - run: flutter pub get
       #working-directory: ./app
 
-    # Check for any formatting issues in the code.
-    # - run: flutter format --set-exit-if-changed .
-    #   working-directory: ./app
-
-    # Statically analyze the Dart code for any errors.
-    # - run: flutter analyze .
-    #   working-directory: ./app
-
-    # Run widget tests for our flutter project.
-    # - run: flutter test
-    #   working-directory: ./app
-    - name: Run gradle
-      run: |
-        ls
-        cd android
-        chmod +x gradlew
-        ./gradlew assembleDebug
       
     # Build debug apk.
     - run: flutter build apk --debug -v
