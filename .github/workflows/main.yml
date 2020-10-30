@@ -36,7 +36,7 @@ jobs:
 
       
     # Build debug apk.
-    - run: flutter build apk --debug -v
+    - run: flutter build apk --debug --split-per-abi
       #working-directory: ./app
       
     
@@ -49,4 +49,8 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: release-apk-harrison
-        path: build/app/outputs/flutter-apk/app-debug.apk
+        path: |
+          build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk
+          build/app/outputs/flutter-apk/app-armeabi-v7a-debug.apk
+          build/app/outputs/flutter-apk/app-x86_64-debug.apk
+          output.json
