@@ -48,5 +48,5 @@ jobs:
     # Upload generated apk to the artifacts.
     - uses: actions/upload-artifact@v1
       with:
-        name: release-apk-harrison
-        path: build/app/outputs/flutter-apk/*
+        name: debug-apks
+        path: build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk
