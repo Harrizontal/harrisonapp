@@ -1,5 +1,7 @@
-import 'package:connectivity/connectivity.dart';
+//import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:harrisonapp/MeetingWidget.dart';
+import 'package:harrisonapp/VideoScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,33 +55,37 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  String _meetingId = "";
+  String _meetingPassword = "";
+  String _userId = "";
+
   @override
   void initState() {
     // TODO: implement initState
 
-    checkConnectivity();
+    //checkConnectivity();
     super.initState();
   }
 
-  checkConnectivity() async{
-    ConnectivityResult result;
-    Connectivity inConnectivity = Connectivity();
-    result = await inConnectivity.checkConnectivity();
-    switch (result) {
-      case ConnectivityResult.wifi:
-        print("on wifi");
-        break;
-      case ConnectivityResult.mobile:
-        print("on mobile");
-        break;
-      case ConnectivityResult.none:
-        print("no connect");
-        break;
-      default:
-        print("lolol");
-        break;
-    }
-  }
+//  checkConnectivity() async{
+//    ConnectivityResult result;
+//    Connectivity inConnectivity = Connectivity();
+//    result = await inConnectivity.checkConnectivity();
+//    switch (result) {
+//      case ConnectivityResult.wifi:
+//        print("on wifi");
+//        break;
+//      case ConnectivityResult.mobile:
+//        print("on mobile");
+//        break;
+//      case ConnectivityResult.none:
+//        print("no connect");
+//        break;
+//      default:
+//        print("lolol");
+//        break;
+//    }
+//  }
 
 
   void _incrementCounter() {
@@ -127,13 +133,62 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Container(
+              padding: EdgeInsets.only(left: 50 , right: 50),
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                        labelText: 'Enter your name'
+                    ),
+                    onChanged: (value){
+                      _userId = value;
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        labelText: 'Enter meeting id'
+                    ),
+                    onChanged: (value){
+                      _meetingId = value;
+                    },
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        labelText: 'Enter meeting password'
+                    ),
+                    onChanged: (value){
+                      _meetingPassword = value;
+                    },
+                  ),
+                ],
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            FlatButton(child: Text("Join"),onPressed: (){
+              if(_meetingId == null || _meetingPassword == null){
+                return;
+              }
+              if (_userId == null){
+                _userId = "Nameless :(";
+              }
+              print("_meetingId: $_meetingId");
+              print("_meetingPassword: $_meetingPassword");
+              Navigator.push(context,
+                  MaterialPageRoute(
+                      builder: (context) => MeetingWidget(userId: _userId, meetingId: _meetingId, meetingPassword: _meetingPassword,)
+                  )
+              );
+            },),
+            FlatButton(
+              child: Text("Video"),
+              onPressed: (){
+                Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context) => VideoScreen()
+                    )
+                );
+              },
+            )
           ],
         ),
       ),
